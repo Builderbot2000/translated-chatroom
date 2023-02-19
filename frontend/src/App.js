@@ -7,8 +7,9 @@ import io from 'socket.io-client';
 import axios from "axios";
 const baseURL = 'http://localhost:3001'
 const App = () => {
-    const [username, setUsername] = useState('');
-    const [room, setRoom] = useState('');
+    const [userID, setUserID] = useState(-1)
+    const [username, setUsername] = useState('')
+    const [room, setRoom] = useState('')
     const [language, setLanguage] = useState('')
     return(
         <Router>
@@ -18,6 +19,8 @@ const App = () => {
                         path=''
                         element={
                             <EntryPage
+                                userID = {userID}
+                                setUserID={setUserID}
                                 username={username}
                                 setUsername={setUsername}
                                 room={room}
@@ -31,7 +34,7 @@ const App = () => {
                     {/* Add this */}
                     <Route
                         path='/chat'
-                        element={<Chatroom username={username} room={room} url={baseURL} language={language}/>}
+                        element={<Chatroom userID={userID} username={username} room={room} url={baseURL} language={language}/>}
                     />
                 </Routes>
             </div>

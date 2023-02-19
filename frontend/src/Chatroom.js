@@ -4,17 +4,17 @@ import SendMessage from "./components/SendMessage";
 import ReceiveMessage from "./components/ReceiveMessage";
 import React, { useEffect } from "react";
 
-const Chatroom = ({ username, url, language }) => {
+const Chatroom = ({ userID, username, url, language }) => {
     return (
         <section id="chat-box">
             <fieldset>
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
-                <UserBar url={url} username={username}/>
+                <UserBar url={url} userID={userID} username={username} />
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
                 <ReceiveMessage url={url} username={username} />
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
-                <SendMessage url={url} username={username} language={language}/>
-
+                <SendMessage url={url} username={username} language={language} />
+                <center>uid: {userID}</center>
             </fieldset>
         </section>
     );

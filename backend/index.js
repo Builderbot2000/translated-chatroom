@@ -108,19 +108,20 @@ app.post('/addMessage', async (request, response) => {
   // }
 })
 
-app.get('/getAllUsers', (request, response) => {
+app.get('/users', (request, response) => {
   User.find({}).then(users => response.json(users))
 })
 
-app.post('/addUser', (request, response) => {
+app.post('/users', (request, response) => {
   const user = User({
+    uid: request.body.uid,
     name: request.body.name,
     language: request.body.language
   })
   User.save().then(saved => response.json(saved))
 })
 
-app.delete('/removeUser/:id', (request, response) => {
+app.delete('/users/:id', (request, response) => {
   User.findByIdAndRemove(request.params.id)
   .then(() => response.status(204).end())
 })

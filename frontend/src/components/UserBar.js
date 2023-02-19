@@ -3,17 +3,20 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 
-const UserBar = ({ username, url }) => {
+const UserBar = ({userID, username, url }) => {
     const [roomUsers, setRoomUsers] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get(url.concat("/getAllUsers"), async (response) => {
+        axios.get(url.concat('/users'), async response => {
             setRoomUsers(response)
         })
     }
     )
 
     const leaveRoom = () => {
+        axios.delete(url.concat(`/users/${userID}`), async response => {
+            console.log(response)
+        })
         navigate('/', { replace: true });
     };
 

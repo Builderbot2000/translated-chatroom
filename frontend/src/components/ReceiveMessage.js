@@ -15,9 +15,9 @@ const ReceiveMessage = ({ username, url }) => {
 
     //receive messages
     useEffect(() => {
-        axios.get(url.concat('/getAll'), async (reponse) => {
-            console.log(reponse)
-            setMessagesReceived(() => reponse)
+        axios.get(url.concat('/getAll'), async response => {
+            console.log(response)
+            setMessagesReceived(() => response)
         })
     }
     );

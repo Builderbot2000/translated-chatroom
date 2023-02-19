@@ -1,9 +1,13 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
+  uid: {
+    type: Number,
+    required: true
+  },
   name: {
     type: String,
-    required: true,
+    required: true
   },
   language: {
     type: String,
