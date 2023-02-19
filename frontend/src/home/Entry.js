@@ -1,17 +1,28 @@
 import React from 'react';
+import axios from "axios";
 import '../css/Entry.scss'
 import {useNavigate} from "react-router-dom";
 
 
-const EntryPage = ({username, setUsername, room, setRoom, socket, language, setlanguage})=>{
+const EntryPage = ({username, setUsername, room, setRoom, socket, language, setLanguage, url})=>{
     const navigate = useNavigate();
 
     const joinRoom =()=>{
-        // console.log(username)
-        // console.log(room)
-        // console.log(setlanguage)
+        console.log(username)
+        console.log(room)
+        console.log(setLanguage)
         if (room !== '' && username !== '') {
-            socket.emit('join_room', { username, room, language});
+            // socket.emit('join_room', { username, room, language});
+            axios.post(url.concat('/addMessage'),{
+                name: username,
+                room: room,
+                language: language
+            })
+            axios.get(url).then(
+                (response)=>{
+                    console.log(response)
+                }
+            )
         }
         navigate('/chat', { replace: false });
     }
@@ -37,7 +48,7 @@ const EntryPage = ({username, setUsername, room, setRoom, socket, language, setl
                         </li>
                         <li>
                             <label htmlFor="Language">Language:</label>
-                            <select onChange={(e) => setlanguage(e.target.value)}>
+                            <select onChange={(e) => setLanguage(e.target.value)}>
                                 <option value='Chinese'>Chinese</option>
                                 <option value='English'>English</option>
                                 <option value='Indian'>Indian</option>

@@ -4,18 +4,18 @@ import Send_messages from "./send_messages";
 import Receive_messages from "./receive_messages";
 import React from "react";
 
-const Chat = ({ username, room, socket,language})=>{
+const Chat = ({ username, room, url,language})=>{
     room = 'testsets'
     username = ['dafsda']
     return(
         <section id="chat-box">
             <fieldset>
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
-                <User_bar socket={socket} username={username} room={room}/>
+                <User_bar url={url} username={username} room={room}/>
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
-                <Receive_messages socket={socket} username={username}/>
+                <Receive_messages url={url} username={username}/>
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
-                <Send_messages socket={socket} username={username} room={room} language={language}/>
+                <Send_messages url={url} username={username} room={room} language={language}/>
 
             </fieldset>
         </section>

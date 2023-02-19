@@ -1,22 +1,24 @@
 import '../css/Chatpage.scss'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
+import axios from "axios";
 
-const User_bar = ({socket, username, room}) =>{
+const User_bar = ({username, room, url}) =>{
     const [roomUsers, setRoomUsers] = useState([]);
     const navigate = useNavigate();
     useEffect(()=>{
-        socket.on('chatroom_users', (data) => {
-            console.log(data);
-            setRoomUsers(data);
-        });
-        return () => socket.off('chatroom_users');
-    },[socket])
+    //     socket.on('chatroom_users', (data) => {
+    //         console.log(data);
+    //         setRoomUsers(data);
+    //     });
+    //     return () => socket.off('chatroom_users');
+        axios.get(url.concat("/getUser"), async (response) => {
+            setRoomUsers(response)
+            })
+        }
+    )
 
     const leaveRoom = () => {
-        const __createdtime__ = Date.now();
-        socket.emit('leave_room', { username, room, __createdtime__ });
-        // Redirect to home page
         navigate('/', { replace: true });
     };
 
@@ -26,7 +28,6 @@ const User_bar = ({socket, username, room}) =>{
             <div id = 'users'>
 
                 <ul>
-                    000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
                     {roomUsers.map((user) => (
                         <li style={{
                             fontWeight: `${user.username === username ? 'bold' : 'normal'}`,
