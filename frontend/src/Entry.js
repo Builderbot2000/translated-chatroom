@@ -2,10 +2,16 @@ import React from 'react';
 import axios from "axios";
 import './css/Entry.scss'
 import {useNavigate} from "react-router-dom";
+import Select from "react-select";
 
 
 const EntryPage = ({userID, username, setUserID, setUsername, room, setRoom, socket, language, setLanguage, url})=>{
     const navigate = useNavigate();
+
+    const options = [
+        { value: 'zh', label: 'Chinese' },
+        { value: 'en', label: 'English' },
+    ];
 
     // Event handler for clicking the Join Room! button
     const joinRoom = () => {
@@ -44,11 +50,8 @@ const EntryPage = ({userID, username, setUserID, setUsername, room, setRoom, soc
                         </li>
                         <li>
                             <label htmlFor="Language">Language:</label>
-                            <select onChange={(e) => setLanguage(e.target.value)}>
-                                <option value='Chinese'>Chinese</option>
-                                <option value='English'>English</option>
-                                <option value='Indian'>Indian</option>
-                            </select>
+                            <Select options={options}
+                                    onChange={(e) => setLanguage(e['value'])}/>
                         </li>
                     </ul>
                 </fieldset>

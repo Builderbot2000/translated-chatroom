@@ -12,6 +12,7 @@ const ReceiveMessage = ({ userID, url, language }) => {
 
     //receive messages
     useEffect(() => {
+        console.log('receive message')
         axios.get(url.concat(`/getAll/:${language}`), async response => {
             console.log(response)
             setMessagesReceived(response)

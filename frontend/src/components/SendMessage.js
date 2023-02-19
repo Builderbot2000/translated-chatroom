@@ -11,12 +11,21 @@ const SendMessage = ({url, username, language, userID}) =>{
     
     const sendMessage = () => {
         if (message !== '') {
-            console.log(message)
+            const date = Date.now()
+            const temp = {
+                userID: userID,
+                name: username,
+                message: message,
+                language: language,
+                time: date
+            }
+            console.log(temp)
             axios.post(url.concat('/addMessage'),{
                 userID: userID,
                 name: username,
                 message: message,
                 language: language,
+                time: date
             })
             setMessage('')
         }

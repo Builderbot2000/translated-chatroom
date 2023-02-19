@@ -5,6 +5,9 @@ import ReceiveMessage from "./components/ReceiveMessage";
 import React, { useEffect } from "react";
 
 const Chatroom = ({ userID, username, url, language }) => {
+    console.log(username)
+    console.log(url)
+    console.log(language)
     return (
         <section id="chat-box">
             <fieldset>
