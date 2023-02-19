@@ -13,7 +13,7 @@ const Chatroom = ({ userID, username, url, language }) => {
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
                 <ReceiveMessage url={url} userID={userID} language={language}/>
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
-                <SendMessage url={url} username={username} language={language} />
+                <SendMessage url={url} username={username} language={language} userID = {userID}/>
                 <center>uid: {userID}</center>
             </fieldset>
         </section>

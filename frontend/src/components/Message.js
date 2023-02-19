@@ -8,7 +8,7 @@ const formatDateFromTimestamp = timestamp => {
 const Message = ({key, message, userID}) => {
     if(message.userID !== userID){
         return (
-            <div className='block' key={key}>
+            <div className='block'>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span className="meta_data">{message.name}</span>
                     <span className="meta_data">
@@ -21,7 +21,7 @@ const Message = ({key, message, userID}) => {
         )
     }else{
         return (
-            <div className='block' key={key} style={{backgroundColor:'blue', float:'right'}}>
+            <div className='block' style={{backgroundColor:'blue', float:'right'}}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span className="meta_data">{message.name}</span>
                     <span className="meta_data">

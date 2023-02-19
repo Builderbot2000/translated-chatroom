@@ -1,11 +1,9 @@
-import './css/entry.scss';
+import './css/Entry.scss';
 import { useState } from 'react';
 import EntryPage from "./Entry";
 import Chatroom from "./Chatroom";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import io from 'socket.io-client';
-import axios from "axios";
-const baseURL = 'http://localhost:3001'
+const baseURL = 'http://localhost:4000'
 const App = () => {
     const [userID, setUserID] = useState(-1)
     const [username, setUsername] = useState('')
