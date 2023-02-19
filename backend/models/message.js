@@ -1,17 +1,18 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
 
 // DO NOT SAVE YOUR PASSWORD TO GITHUB!!
-// const url = process.env.MONGODB_URL
-// console.log('connecting to', url)
+const url = process.env.MONGODB_URL
+console.log('connecting to', url)
 
-// mongoose.set('strictQuery', false)
-// mongoose.connect(url)
-//   .then(result => {
-//     console.log('connected to MongoDB')
-//   })
-//   .catch((error) => {
-//     console.log('error connecting to MongoDB:', error.message)
-//   })
+mongoose.set('strictQuery', false)
+mongoose.connect(url)
+  .then(result => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connecting to MongoDB:', error.message)
+  })
 
 const messageSchema = new mongoose.Schema({
   name: {

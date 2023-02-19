@@ -1,14 +1,14 @@
 require('dotenv').config()
-const mongoose=require('mongoose');
-mongoose.connect(process.env.MONGO_URL,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
+// const mongoose=require('mongoose');
+// mongoose.connect(process.env.MONGO_URL,{
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true,
     
-}).then(()=>{
-    console.log("DB Connection Sucessful")
-}).catch((err)=>{
-    console.log(err.message)
-});
+// }).then(()=>{
+//     console.log("DB Connection Sucessful")
+// }).catch((err)=>{
+//     console.log(err.message)
+// });
 const express = require('express')
 const cors = require('cors')
 const Message = require('./models/message')
@@ -75,7 +75,7 @@ catch(ex){
 }
 })
 
-const PORT = 3001
+const PORT = 3002
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
