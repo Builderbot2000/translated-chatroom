@@ -1,26 +1,26 @@
-import '../css/Chatpage.scss'
+import '../css/chatroom.scss'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 
-const User_bar = ({username, room, url}) =>{
+const UserBar = ({ username, url }) => {
     const [roomUsers, setRoomUsers] = useState([]);
     const navigate = useNavigate();
-    useEffect(()=>{
-        axios.get(url.concat("/getUser"), async (response) => {
+    useEffect(() => {
+        axios.get(url.concat("/getAllUsers"), async (response) => {
             setRoomUsers(response)
-            })
-        }
+        })
+    }
     )
 
     const leaveRoom = () => {
         navigate('/', { replace: true });
     };
 
-    return(
+    return (
         <div id="user-bar">
-            <h2>Room Name: {room}</h2>
-            <div id = 'users'>
+            <h2>Online</h2>
+            <div id='users'>
                 <ul>
                     {roomUsers.map((user) => (
                         <li style={{
@@ -38,4 +38,4 @@ const User_bar = ({username, room, url}) =>{
     )
 }
 
-export default User_bar
+export default UserBar

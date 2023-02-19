@@ -1,7 +1,7 @@
-import './css/Entry.scss';
+import './css/entry.scss';
 import { useState } from 'react';
 import EntryPage from "./Entry";
-import Chat from "./Chatroom";
+import Chatroom from "./Chatroom";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import io from 'socket.io-client';
 import axios from "axios";
@@ -31,7 +31,7 @@ const App = () => {
                     {/* Add this */}
                     <Route
                         path='/chat'
-                        element={<Chat username={username} room={room} url={baseURL} language={language}/>}
+                        element={<Chatroom username={username} room={room} url={baseURL} language={language}/>}
                     />
                 </Routes>
             </div>

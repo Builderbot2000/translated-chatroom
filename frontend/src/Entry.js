@@ -1,29 +1,17 @@
 import React from 'react';
 import axios from "axios";
-import './css/Entry.scss'
+import './css/entry.scss'
 import {useNavigate} from "react-router-dom";
 
 
 const EntryPage = ({username, setUsername, room, setRoom, socket, language, setLanguage, url})=>{
     const navigate = useNavigate();
 
+    // Event handler for clicking the Join Room! button
     const joinRoom =()=>{
         console.log(username)
         console.log(room)
         console.log(setLanguage)
-        if (room !== '' && username !== '') {
-            // socket.emit('join_room', { username, room, language});
-            axios.post(url.concat('/addMessage'),{
-                name: username,
-                room: room,
-                language: language
-            })
-            axios.get(url).then(
-                (response)=>{
-                    console.log(response)
-                }
-            )
-        }
         navigate('/chat', { replace: false });
     }
 

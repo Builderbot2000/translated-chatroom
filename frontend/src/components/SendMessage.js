@@ -1,14 +1,14 @@
-import '../css/Chatpage.scss'
+import '../css/chatroom.scss'
 import React, { useState } from 'react';
 import axios from "axios";
 
-const Send_messages = ({url, username, language}) =>{
+const SendMessage = ({url, username, language}) =>{
     const [message,setMessage] = useState('');
     const sendMessage = () => {
         if (message !== '') {
             axios.post(url.concat('/addMessage'),{
                 name: username,
-                message:message,
+                message: message,
                 language: language,
             })
             axios.get(url).then(
@@ -33,4 +33,4 @@ const Send_messages = ({url, username, language}) =>{
     );
 }
 
-export default Send_messages
+export default SendMessage
