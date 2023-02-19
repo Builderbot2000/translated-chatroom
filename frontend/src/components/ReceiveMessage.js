@@ -3,7 +3,7 @@ import Message from './Message';
 import { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 
-const ReceiveMessage = ({ username, url }) => {
+const ReceiveMessage = ({ username, url, language }) => {
     const [messagesRecieved, setMessagesReceived] = useState([]);
     const messagesColumnRef = useRef(null);
 
@@ -15,7 +15,7 @@ const ReceiveMessage = ({ username, url }) => {
 
     //receive messages
     useEffect(() => {
-        axios.get(url.concat('/getAll'), async response => {
+        axios.get(url.concat(`/getAll/:${language}`), async response => {
             console.log(response)
             setMessagesReceived(() => response)
         })

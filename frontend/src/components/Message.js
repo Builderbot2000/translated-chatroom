@@ -2,7 +2,7 @@ import '../css/chatroom.scss'
 
 const formatDateFromTimestamp = timestamp => {
     const date = new Date(timestamp);
-    return date.toLocaleString();
+    return timestamp;
 }
 
 const Message = ({key, message}) => {
