@@ -65,7 +65,7 @@ div#user-bar{
     }
   }
 }
-div#sentences{
+div#received{
   float: left;
   margin: auto 0;
   padding: 20px;
@@ -127,6 +127,15 @@ div#message{
       }
     }
   }
+}
+.block{
+  margin: auto 0 10px;
+  padding: 20px;
+  background-color: #a6a6a6;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+  border: none;
+  width: 60%;
 }
 
 @keyframes Gradient {
