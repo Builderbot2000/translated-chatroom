@@ -1,0 +1,8 @@
+POST http://localhost:3004/users
+Content-Type: application/json
+
+{
+    "uid": 12345,
+    "name": "Helen",
+    "language": "cn"
+}

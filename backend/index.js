@@ -104,7 +104,7 @@ app.post('/users', (request, response) => {
     name: request.body.name,
     language: request.body.language
   })
-  User.save().then(saved => response.json(saved))
+  user.save().then(saved => response.json(saved))
 })
 
 app.delete('/users/:id', (request, response) => {
