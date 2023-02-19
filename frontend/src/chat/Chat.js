@@ -1,8 +1,9 @@
 import '../css/Chatpage.scss'
 import User_bar from "./User_bar";
+import Send_messages from "./send_messages";
 import React from "react";
 
-const Chat = ({ username, room, socket })=>{
+const Chat = ({ username, room, socket,language})=>{
     room = 'testsets'
     username = ['dafsda']
     return(
@@ -10,11 +11,9 @@ const Chat = ({ username, room, socket })=>{
             <fieldset>
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
                 {/*<User_bar/>*/}
-
                 <User_bar socket={socket} username={username} room={room}/>
                 <div id='sentences'>bssss</div>
-                <div id ='message'>csfsfsss</div>
-
+                <Send_messages socket={socket} username={username} room={room} language={language}/>
 
             </fieldset>
         </section>

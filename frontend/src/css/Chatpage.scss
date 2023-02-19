@@ -83,6 +83,30 @@ div#message{
   border-radius: 10px;
   width: 70%;
   height: 12%;
+  textarea{
+    text-align: start;
+    font-size: 20px;
+    height: 100%;
+    inline-size: 82%;
+    overflow-wrap: break-word;
+    border: none;
+    resize: none;
+    outline:0px;
+  }
+  button{
+    position:relative;
+    float: right;
+    top: 60%;
+    padding: 10px;
+    border:1px solid rgba(0,0,0,0);
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    &:hover {
+      background-color: #eef;
+      border: 1px solid #aaf;
+    }
+  }
 }
 
 @media only screen and (min-width: 420px) {
