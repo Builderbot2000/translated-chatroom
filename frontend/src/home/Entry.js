@@ -3,7 +3,7 @@ import '../css/Entry.scss'
 import {useNavigate} from "react-router-dom";
 
 
-const EntryPage = ({username, setUsername, room, setRoom, socket, setlanguage})=>{
+const EntryPage = ({username, setUsername, room, setRoom, socket, language, setlanguage})=>{
     const navigate = useNavigate();
 
     const joinRoom =()=>{
@@ -11,7 +11,7 @@ const EntryPage = ({username, setUsername, room, setRoom, socket, setlanguage})=
         // console.log(room)
         // console.log(setlanguage)
         if (room !== '' && username !== '') {
-            socket.emit('join_room', { username, room });
+            socket.emit('join_room', { username, room, language});
         }
         navigate('/chat', { replace: false });
     }

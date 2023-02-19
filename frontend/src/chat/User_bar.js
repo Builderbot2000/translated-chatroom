@@ -24,8 +24,9 @@ const User_bar = ({socket, username, room}) =>{
         <div id="user-bar">
             <h2>Room Name: {room}</h2>
             <div id = 'users'>
-                00000000000000000000000000000000000000000000000000000000000000000000000000
+
                 <ul>
+                    000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
                     {roomUsers.map((user) => (
                         <li style={{
                             fontWeight: `${user.username === username ? 'bold' : 'normal'}`,

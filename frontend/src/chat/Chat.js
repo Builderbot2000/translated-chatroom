@@ -11,9 +11,10 @@ const Chat = ({ username, room, socket,language})=>{
         <section id="chat-box">
             <fieldset>
                 {/* eslint-disable-next-line react/jsx-pascal-case */}
-                {/*<User_bar/>*/}
                 <User_bar socket={socket} username={username} room={room}/>
+                {/* eslint-disable-next-line react/jsx-pascal-case */}
                 <Receive_messages socket={socket} username={username}/>
+                {/* eslint-disable-next-line react/jsx-pascal-case */}
                 <Send_messages socket={socket} username={username} room={room} language={language}/>
 
             </fieldset>

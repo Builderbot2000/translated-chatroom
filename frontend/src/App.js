@@ -10,6 +10,7 @@ const socket = io.connect('http://localhost:4000');
 const App = () => {
     const [username, setUsername] = useState('');
     const [room, setRoom] = useState('');
+    const [language, setLanguage] = useState('')
     return(
         <Router>
             <div className='App'>
@@ -22,6 +23,8 @@ const App = () => {
                                 setUsername={setUsername}
                                 room={room}
                                 setRoom={setRoom}
+                                language={language}
+                                setLanguage={setLanguage}
                                 socket={socket}
                             />
                         }
@@ -29,7 +32,7 @@ const App = () => {
                     {/* Add this */}
                     <Route
                         path='/chat'
-                        element={<Chat username={username} room={room} socket={socket} />}
+                        element={<Chat username={username} room={room} socket={socket} language={language}/>}
                     />
                 </Routes>
             </div>
