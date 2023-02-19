@@ -3,20 +3,30 @@ import Message from './Message';
 import { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import io from 'socket.io-client';
+import {wait} from "@testing-library/user-event/dist/utils";
 
 
-const ReceiveMessage = ({ userID, url, language }) => {
+const ReceiveMessage = ({ username, url, language }) => {
     const [messagesRecieved, setMessagesReceived] = useState([]);
     const messagesColumnRef = useRef(null);
 
+    function sortMessagesByDate(messages) {
+        console.log('sort')
+        console.log(messages)
+        return messages.sort(
+            (a, b) => parseInt(a.time) - parseInt(b.time)
+        );
+    }
     //receive messages
-    useEffect(() => {
-            console.log('receive message')
-            console.log(url.concat('/getAll/fr'))
-            axios.get(url.concat('/getAll/fr')).then((r) => console.log('get response'))
+    useEffect(
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        () => {
+            axios.get(url.concat('/getAll/fr')).then((r) => {
+                console.log(r.data[0].time)
+                setMessagesReceived(sortMessagesByDate(r.data))
+            })
         }
-    );
-
+    )
 
     //scroll to the most recent message
     useEffect(() => {
@@ -28,7 +38,7 @@ const ReceiveMessage = ({ userID, url, language }) => {
         <div id='received' ref={messagesColumnRef}>
             {
                 messagesRecieved.map((msg, i) => (
-                    <Message message={msg} key={i}/>
+                    <Message message={msg} key={i} username={username}/>
                 ))
             }
         </div>
