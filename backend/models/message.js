@@ -19,7 +19,15 @@ const messageSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  number: {
+  language: {
+    type: String,
+    required: true
+  },
+  message: {
+    type: String,
+    required: true
+  },
+  time: {
     type: String,
     required: true
   }
