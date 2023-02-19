@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-require('dotenv').config()
 
 // DO NOT SAVE YOUR PASSWORD TO GITHUB!!
 const url = process.env.MONGODB_URL
