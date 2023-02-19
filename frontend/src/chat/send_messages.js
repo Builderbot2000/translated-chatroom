@@ -10,9 +10,9 @@ const Send_messages = ({url, username, language}) =>{
             // Send message to server. We can't specify who we send the message to from the frontend. We can only send to server. Server can then send message to rest of users in room
             // socket.emit('send_message', { username, room, message,language,__createdtime__ });
             axios.post(url.concat('/addMessage'),{
-                name: username,
+                name: username[0],
                 message:message,
-                language: language
+                language: language,
             })
             axios.get(url).then(
                 (response)=>{

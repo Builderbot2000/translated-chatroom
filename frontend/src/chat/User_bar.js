@@ -7,11 +7,6 @@ const User_bar = ({username, room, url}) =>{
     const [roomUsers, setRoomUsers] = useState([]);
     const navigate = useNavigate();
     useEffect(()=>{
-    //     socket.on('chatroom_users', (data) => {
-    //         console.log(data);
-    //         setRoomUsers(data);
-    //     });
-    //     return () => socket.off('chatroom_users');
         axios.get(url.concat("/getUser"), async (response) => {
             setRoomUsers(response)
             })
@@ -26,7 +21,6 @@ const User_bar = ({username, room, url}) =>{
         <div id="user-bar">
             <h2>Room Name: {room}</h2>
             <div id = 'users'>
-
                 <ul>
                     {roomUsers.map((user) => (
                         <li style={{

@@ -60,7 +60,8 @@ app.post('/addMessage', async(request, response) => {
   // YOUR CODE HERE
   var today = new Date();
   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  try{    
+  try{
+      console.log(request.body)
     const user =await Message.create({
       name: request.body.name,
       language:request.body.language ,

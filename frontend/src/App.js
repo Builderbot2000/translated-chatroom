@@ -5,8 +5,6 @@ import Chat from "./chat/Chat";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import io from 'socket.io-client';
 import axios from "axios";
-//
-const socket = io.connect('http://localhost:4000');
 const baseURL = 'http://localhost:3001'
 const App = () => {
     const [username, setUsername] = useState('');
@@ -26,7 +24,6 @@ const App = () => {
                                 setRoom={setRoom}
                                 language={language}
                                 setLanguage={setLanguage}
-                                socket={socket}
                                 url={baseURL}
                             />
                         }
