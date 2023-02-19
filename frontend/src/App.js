@@ -1,4 +1,4 @@
-import './css/Entry.scss';
+import './css/entry.scss';
 import { useState } from 'react';
 import EntryPage from "./Entry";
 import Chatroom from "./Chatroom";

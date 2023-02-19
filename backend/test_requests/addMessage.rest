@@ -1,4 +1,10 @@
 POST http://localhost:3004/addMessage
 Content-Type: application/json
 
-{}
+{
+    "userID": 123456,
+    "name": "ulee",
+    "language": "cn",
+    "message": "hyulla",
+    "time": "12-3-45"
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import './css/Entry.scss'
+import './css/entry.scss'
 import {useNavigate} from "react-router-dom";
 import Select from "react-select";
 
