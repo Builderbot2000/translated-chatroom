@@ -27,6 +27,9 @@ const SendMessage = ({url, username, language, userID}) =>{
                 language: language,
                 time: date
             })
+            axios.get(url.concat(`/getAll/:${language}`), async response => {
+                console.log(response)
+            })
             setMessage('')
         }
     };

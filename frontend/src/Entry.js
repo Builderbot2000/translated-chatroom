@@ -9,8 +9,10 @@ const EntryPage = ({userID, username, setUserID, setUsername, room, setRoom, soc
     const navigate = useNavigate();
 
     const options = [
-        { value: 'zh', label: 'Chinese' },
+        { value: 'zh-CN', label: 'Chinese' },
         { value: 'en', label: 'English' },
+        { value: 'de', label: 'German'},
+        { value: 'it', label: 'Italian'}
     ];
 
     // Event handler for clicking the Join Room! button

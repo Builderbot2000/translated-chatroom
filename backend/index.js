@@ -73,6 +73,7 @@ app.get('/getAll/:language', async (request, response) => {
 })
 
 app.post('/addMessage', async (request, response) => {
+  console.log('triggrt addmessage')
   // Call DB using the "Message" endpoint defined above
   // save the new message onto DB
   // call the socketIO server

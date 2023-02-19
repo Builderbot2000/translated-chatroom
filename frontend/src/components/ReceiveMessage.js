@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import io from 'socket.io-client';
 
-const socket = io(process.env.SOCKET_ENDPOINT)
 
 const ReceiveMessage = ({ userID, url, language }) => {
     const [messagesRecieved, setMessagesReceived] = useState([]);
@@ -12,18 +11,12 @@ const ReceiveMessage = ({ userID, url, language }) => {
 
     //receive messages
     useEffect(() => {
-        console.log('receive message')
-        axios.get(url.concat(`/getAll/:${language}`), async response => {
-            console.log(response)
-            setMessagesReceived(response)
-            })
+            console.log('receive message')
+            console.log(url.concat('/getAll/fr'))
+            axios.get(url.concat('/getAll/fr')).then((r) => console.log('get response'))
         }
     );
 
-    socket.on('message', (newMessage) => {
-        console.log('You have got mail!')
-        messagesRecieved.push(newMessage)
-    })
 
     //scroll to the most recent message
     useEffect(() => {
