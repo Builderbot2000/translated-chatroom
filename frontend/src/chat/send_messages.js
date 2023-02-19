@@ -6,11 +6,8 @@ const Send_messages = ({url, username, language}) =>{
     const [message,setMessage] = useState('');
     const sendMessage = () => {
         if (message !== '') {
-            // const __createdtime__ = Date.now();
-            // Send message to server. We can't specify who we send the message to from the frontend. We can only send to server. Server can then send message to rest of users in room
-            // socket.emit('send_message', { username, room, message,language,__createdtime__ });
             axios.post(url.concat('/addMessage'),{
-                name: username[0],
+                name: username,
                 message:message,
                 language: language,
             })
