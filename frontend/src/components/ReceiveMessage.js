@@ -2,8 +2,11 @@ import '../css/chatroom.scss'
 import Message from './Message';
 import { useState, useEffect, useRef } from 'react';
 import axios from "axios";
+import io from 'socket.io-client';
 
-const ReceiveMessage = ({ username, url, language }) => {
+const socket = io(process.env.SOCKET_ENDPOINT)
+
+const ReceiveMessage = ({ userID, url, language }) => {
     const [messagesRecieved, setMessagesReceived] = useState([]);
     const messagesColumnRef = useRef(null);
 
@@ -22,16 +25,10 @@ const ReceiveMessage = ({ username, url, language }) => {
     }
     );
 
-    //receive previous messages
-    // useEffect(()=>{
-    //     socket.on('message_previous', (last1minMessages)=>{
-    //         console.log("Last 1 min messages", JSON.parse(last1minMessages));
-    //         last1minMessages = JSON.parse(last1minMessages)
-    //         last1minMessages = sortMessagesByDate(last1minMessages);
-    //         setMessagesReceived((state) => [...last1minMessages, ...state]);
-    //     });
-    //     return ()=>socket.off('message_previous')
-    // },[socket]);
+    socket.on('message', (newMessage) => {
+        console.log('You have got mail!')
+        messagesRecieved.push(newMessage)
+    })
 
     //scroll to the most recent message
     useEffect(() => {

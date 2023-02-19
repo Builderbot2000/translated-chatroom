@@ -3,13 +3,9 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import io from 'socket.io-client';
 
-let socket
+const socket = io(process.env.SOCKET_ENDPOINT)
 
 const SendMessage = ({url, username, language}) =>{
-
-    useEffect = (() => {
-        socket = io(process.env.SOCKET_ENDPOINT)},
-        [process.env.SOCKET_ENDPOINT])
 
     const [message,setMessage] = useState('');
     
@@ -25,7 +21,8 @@ const SendMessage = ({url, username, language}) =>{
                     console.log(response)
                 }
             )
-            socket.emit('sentMessage', message, () => setMessage(''));
+            socket.emit('new_message', message);
+            setMessage('')
         }
     };
     return (

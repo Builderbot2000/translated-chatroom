@@ -76,7 +76,6 @@ app.post('/addMessage', async (request, response) => {
   // Call DB using the "Message" endpoint defined above
   // save the new message onto DB
   // call the socketIO server
-  // send the new message to the socketIO server
   // return confirmation of success or failure
   //
   // YOUR CODE HERE
@@ -85,31 +84,14 @@ app.post('/addMessage', async (request, response) => {
   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
   const message = new Message({
-    name: "Kevin",
-    language: "de",
-    message: "Ich bin ein Mann.",
+    userID: request.body.userID,
+    name: request.body.name,
+    language: request.body.language,
+    message: request.body.message,
     time: time
   })
-
   message.save().then(console.log("message saved"))
-
   response.send(message)
-
-  // var today = new Date();
-  // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  // try {
-  //   console.log(request.body)
-  //   const user = await Message.create({
-  //     name: request.body.name,
-  //     language: request.body.language,
-  //     message: request.body.message,
-  //     time: time
-  //   });
-  //   return response.json({ status: true })
-  // }
-  // catch (ex) {
-  //   next(ex)
-  // }
 })
 
 app.get('/users', (request, response) => {
@@ -132,7 +114,7 @@ app.delete('/users/:id', (request, response) => {
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+  console.log(`Express controller running on port ${PORT}`)
 })
 
 io.on('connection', (socket) => {
@@ -140,5 +122,5 @@ io.on('connection', (socket) => {
 });
 
 chatServer.listen((PORT+1 || 3001), () => {
-  console.log(`Started socket io server on port ${PORT}`);
+  console.log(`Socket IO server running on port ${parseInt(PORT)+1}`);
 })
