@@ -7,6 +7,10 @@ const User = require('./models/user')
 const { request, response, json } = require('express')
 
 const app = express()
+const http = require('http');
+const chatServer = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(chatServer);
 
 app.use(express.static('build'))
 app.use(cors())
@@ -129,4 +133,12 @@ app.delete('/users/:id', (request, response) => {
 const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
+})
+
+io.on('connection', (socket) => {
+  socket.broadcast.emit('hi');
+});
+
+chatServer.listen((PORT+1 || 3001), () => {
+  console.log(`Started socket io server on port ${PORT}`);
 })

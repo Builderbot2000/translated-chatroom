@@ -1,9 +1,18 @@
 import '../css/chatroom.scss'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import io from 'socket.io-client';
+
+let socket
 
 const SendMessage = ({url, username, language}) =>{
+
+    useEffect = (() => {
+        socket = io(process.env.SOCKET_ENDPOINT)},
+        [process.env.SOCKET_ENDPOINT])
+
     const [message,setMessage] = useState('');
+    
     const sendMessage = () => {
         if (message !== '') {
             axios.post(url.concat('/addMessage'),{
@@ -16,7 +25,7 @@ const SendMessage = ({url, username, language}) =>{
                     console.log(response)
                 }
             )
-            setMessage('');
+            socket.emit('sentMessage', message, () => setMessage(''));
         }
     };
     return (
