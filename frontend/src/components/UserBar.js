@@ -16,9 +16,6 @@ const UserBar = ({userID, username, url }) => {
     )
 
     const leaveRoom = () => {
-        axios.delete(url.concat('/users/').concat(userID), async response => {
-            console.log(response)
-        })
         navigate('/', { replace: true });
     };
 

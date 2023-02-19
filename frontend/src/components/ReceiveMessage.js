@@ -4,12 +4,11 @@ import {useEffect, useRef, useState} from 'react';
 import axios from "axios";
 
 
-const ReceiveMessage = ({ username, url, language }) => {
+const ReceiveMessage = ({ username, url, language}) => {
     const [messagesRecieved, setMessagesReceived] = useState([]);
     const messagesColumnRef = useRef(null);
 
     function sortMessagesByDate(messages) {
-        const [hours1, minutes1, seconds1] = messages[0].time.split(':');
         return messages.sort(
             (a, b) => {
                 const [hours1, minutes1, seconds1] = a.time.split(':');
@@ -25,7 +24,7 @@ const ReceiveMessage = ({ username, url, language }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         () => {
             const Timmer = setTimeout(()=>{
-                axios.get(url.concat('/getAll/fr')).then((r) => {
+                axios.get(url.concat('/getAll/').concat(language)).then((r) => {
                     setMessagesReceived(sortMessagesByDate(r.data))
                 })
             }, 1000)

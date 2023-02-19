@@ -12,7 +12,9 @@ const EntryPage = ({userID, username, setUserID, setUsername, room, setRoom, soc
         { value: 'zh-CN', label: 'Chinese' },
         { value: 'en', label: 'English' },
         { value: 'de', label: 'German'},
-        { value: 'it', label: 'Italian'}
+        { value: 'it', label: 'Italian'},
+        { value: 'fr', label: 'French'},
+        { value: 'es', label: 'Spanish'}
     ];
 
     // Event handler for clicking the Join Room! button
