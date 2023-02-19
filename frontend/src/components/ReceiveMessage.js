@@ -21,11 +21,16 @@ const ReceiveMessage = ({ username, url, language }) => {
     useEffect(
         // eslint-disable-next-line react-hooks/exhaustive-deps
         () => {
-            axios.get(url.concat('/getAll/fr')).then((r) => {
-                console.log(r.data[0].time)
-                setMessagesReceived(sortMessagesByDate(r.data))
-            })
-        }
+            const timer = setTimeout(()=>{
+                axios.get(url.concat('/getAll/fr')).then((r) => {
+                    console.log(r.data[0].time)
+                    setMessagesReceived(sortMessagesByDate(r.data))
+
+                })
+                console.log(Date.now())
+            },100)
+            return ()=> clearTimeout(timer)
+        },[url]
     )
 
     //scroll to the most recent message

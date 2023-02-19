@@ -7,14 +7,16 @@ const UserBar = ({userID, username, url }) => {
     const [roomUsers, setRoomUsers] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get(url.concat('/users'), async response => {
-            setRoomUsers(response)
-        })
-    }
+            axios.get(url.concat('/users')).then(
+                (r)=>{
+                    setRoomUsers(r.data)
+                }
+            )
+        }
     )
 
     const leaveRoom = () => {
-        axios.delete(url.concat(`/users/${userID}`), async response => {
+        axios.delete(url.concat('/users/').concat(userID), async response => {
             console.log(response)
         })
         navigate('/', { replace: true });
@@ -29,7 +31,7 @@ const UserBar = ({userID, username, url }) => {
                         <li style={{
                             fontWeight: `${user.username === username ? 'bold' : 'normal'}`,
                         }}>
-                            {user.username}, {user.language}
+                            {user.name}( {user.language})
                         </li>
                     ))}
                 </ul>
