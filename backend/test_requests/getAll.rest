@@ -1,1 +1,1 @@
-GET http://localhost:3002/getAll/fr
+GET http://localhost:3004/getAll/fr

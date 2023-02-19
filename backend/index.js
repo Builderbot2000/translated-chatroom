@@ -39,32 +39,30 @@ app.get('/getAll/:language', async (request, response) => {
   // send all translated messages as response
   // 
   // YOUR CODE HERE
-
-  await Message.find({}).then(result => {
+  await Message.find({}).then(async result => {
+    console.log('res', result)
     const translatedMessages = []
 
-    result.forEach(element => {
-      const text = element.message
-      const target = request.params.language
-
-      const translateText = async () => {
-        let [translations] = await translate.translate(text, target)
-        translations = Array.isArray(translations) ? translations : [translations]
-        console.log("Translations:")
-        translations.forEach((translation, i) => {
-          translatedMessages.push({
-            "name" : element.name,
-            "language" : element.language,
-            "message" : translation,
-            "time" : element.time
+    await Promise.all(
+      result.map(async message => {
+        const translateText = async () => {
+          let [translations] = await translate.translate(message.message, request.params.language)
+          translations = Array.isArray(translations) ? translations : [translations]
+          console.log("Translations:")
+          translations.forEach((translation, i) => {
+            translatedMessages.push({
+              "name" : message.name,
+              "language" : message.language,
+              "message" : translation,
+              "time" : message.time
+            })
+            console.log(translatedMessages)
           })
-          console.log(translatedMessages)
-        })
-      }
-
-      translateText();
-    })
-    response.send(translatedMessages) 
+        }
+        await translateText();
+      })
+    )
+    await response.send(translatedMessages) 
   })
 })
 
