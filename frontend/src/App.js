@@ -1,7 +1,7 @@
 import './css/Entry.scss';
 import { useState } from 'react';
-import EntryPage from "./home/Entry";
-import Chat from "./chat/chat";
+import EntryPage from "./Entry";
+import Chat from "./Chatroom";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import io from 'socket.io-client';
 import axios from "axios";

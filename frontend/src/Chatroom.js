@@ -1,7 +1,7 @@
-import '../css/Chatpage.scss'
-import User_bar from "./User_bar";
-import Send_messages from "./send_messages";
-import Receive_messages from "./receive_messages";
+import './css/Chatpage.scss'
+import User_bar from "./components/UserBar";
+import Send_messages from "./components/SendMessage";
+import Receive_messages from "./components/ReceiveMessage";
 import React from "react";
 
 const Chat = ({ username, room, url,language})=>{
