@@ -1,8 +1,39 @@
+import './css/Entry.scss';
+import { useState } from 'react';
+import EntryPage from "./home/Entry";
+import Chat from "./chat/Chat";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import io from 'socket.io-client';
+//
+const socket = io.connect('http://localhost:4000');
 
-
-const App = () => (
-    <div>
-        <p1>Hello world</p1>
-    </div>
-)
+const App = () => {
+    const [username, setUsername] = useState('');
+    const [room, setRoom] = useState('');
+    return(
+        <Router>
+            <div className='App'>
+                <Routes>
+                    <Route
+                        path=''
+                        element={
+                            <EntryPage
+                                username={username}
+                                setUsername={setUsername}
+                                room={room}
+                                setRoom={setRoom}
+                                socket={socket}
+                            />
+                        }
+                    />
+                    {/* Add this */}
+                    <Route
+                        path='/chat'
+                        element={<Chat username={username} room={room} socket={socket} />}
+                    />
+                </Routes>
+            </div>
+        </Router>
+    );
+}
 export default App;

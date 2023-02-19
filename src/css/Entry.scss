@@ -85,6 +85,7 @@ section#entry-page {
     }
   }
 }
+
 @media only screen and (min-width: 420px) {
   form {
     h2 {
@@ -107,12 +108,12 @@ section#entry-page {
 
 @keyframes Gradient {
   0% {
-    background-position: 0% 50%
+    background-position: 0 50%
   }
   50% {
     background-position: 100% 50%
   }
   100% {
-    background-position: 0% 50%
+    background-position: 0 50%
   }
 }
