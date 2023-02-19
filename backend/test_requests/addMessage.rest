@@ -1,0 +1,4 @@
+POST http://localhost:3004/addMessage
+Content-Type: application/json
+
+{}
