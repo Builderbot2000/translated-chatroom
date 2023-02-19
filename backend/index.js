@@ -1,7 +1,9 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
+require('./models/mongo_init')
 const Message = require('./models/message')
+const User = require('./models/user')
 const { request, response, json } = require('express')
 
 const app = express()
@@ -79,9 +81,9 @@ app.post('/addMessage', async (request, response) => {
   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
   const message = new Message({
-    name: "Victor",
-    language: "en",
-    message: "Hello!",
+    name: "Kevin",
+    language: "de",
+    message: "Ich bin ein Mann.",
     time: time
   })
 
@@ -104,6 +106,23 @@ app.post('/addMessage', async (request, response) => {
   // catch (ex) {
   //   next(ex)
   // }
+})
+
+app.get('/getAllUsers', (request, response) => {
+  User.find({}).then(users => response.json(users))
+})
+
+app.post('/addUser', (request, response) => {
+  const user = User({
+    name: request.body.name,
+    language: request.body.language
+  })
+  User.save().then(saved => response.json(saved))
+})
+
+app.delete('/removeUser/:id', (request, response) => {
+  User.findByIdAndRemove(request.params.id)
+  .then(() => response.status(204).end())
 })
 
 const PORT = process.env.PORT
